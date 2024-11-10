@@ -1,0 +1,34 @@
+<div class="container p-6 mx-auto">
+  <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">Book: <%= @book.title %></h1>
+  
+  <div class="container mx-auto mt-8">
+    <table class="min-w-full bg-white border rounded-lg shadow-md">
+      <thead>
+        <tr>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-6 py-4 border-b">
+            <div class="mb-4">
+              <h2 class="text-xl font-semibold text-gray-700">Author: <%= @book.author.name if @book.author %></h2>
+            </div>
+            <p class="text-gray-600 mb-6"><%= @book.content %></p>
+            <br>
+            <div class="mt-6">
+              <ul class="space-y-2">
+                <li>
+                  <%= link_to "Edit", edit_book_path(@book), class: "text-yellow-500 hover:underline" %>
+                </li>
+                <li>
+                  <%= link_to "Destroy", book_path(@book), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:underline" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

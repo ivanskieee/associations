@@ -1,0 +1,20 @@
+<div class="container p-6 mx-auto">
+  <h1 class="text-3xl font-bold text-center my-8" style="margin-top: -2rem;">Books</h1>
+
+  <table class="min-w-full bg-white border rounded-lg shadow-md">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Title</th>
+        <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-6 py-4 text-gray-800"><%= book.title %></td>
+          <td class="px-6 py-4 text-gray-800"><%= book.author.name if book.author %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

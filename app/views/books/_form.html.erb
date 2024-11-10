@@ -1,0 +1,71 @@
+<%= form_with model: book do |form| %>
+  <div class="form-container">
+    
+    <div class="form-group">
+      <%= form.label :title, class: 'form-label' %><br>
+      <%= form.text_field :title, class: 'form-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content, class: 'form-label' %><br>
+      <%= form.text_field :content, class: 'form-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :author_id, "Author", class: 'form-label' %><br>
+      <%= form.collection_select :author_id, Author.all, :id, :name, prompt: "Select an Author", class: 'form-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Create Book', class: 'submit-btn' %>
+    </div>
+    
+  </div>
+<% end %>
+
+<style>
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .form-label {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+</style>
