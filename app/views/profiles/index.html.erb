@@ -1,0 +1,21 @@
+<div class="container p-6 mx-auto">
+  <h1 class="mb-4 text-3xl font-bold text-gray-800">Profiles</h1>
+  <table class="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-4 py-2 border-b">Bio</th>
+        <th class="px-4 py-2 border-b">User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @profiles.each do |profile| %>
+        <tr>
+          <td class="px-4 py-2 border-b"><%= profile.name %></td>
+          <td class="px-4 py-2 border-b"><%= profile.gender %></td>
+          <td class="px-4 py-2 border-b"><%= profile.bio %></td>
+          <td class="px-4 py-2 border-b"><%= profile.user.email if profile.user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
