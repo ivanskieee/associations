@@ -10,7 +10,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td class="px-6 py-4 border-b text-gray-800 font-semibold"><%= user.email %></td>
+          <td class="px-6 py-4 border-b text-gray-800 font-semibold"><%= link_to user.email, user_path(user), class: "text-blue-500 hover:underline" %></td>
           <td class="px-6 py-4 border-b text-gray-800"><%= user.profile ? user.profile.name : "No profile" %></td>
           <td class="px-6 py-4 border-b text-gray-800"><%= user.profile ? user.profile.gender : "No profile" %></td>
           <td class="px-6 py-4 border-b text-gray-800"><%= user.profile ? user.profile.bio : "No profile" %></td>

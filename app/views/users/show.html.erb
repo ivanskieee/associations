@@ -1,5 +1,35 @@
 <div class="container p-6 mx-auto">
-  <h1 class="mb-4 text-3xl font-bold text-gray-800">User: <%= @user.email %></h1>
-  <h2 class="mb-2 text-xl">Profile</h2>
-  <p><%= @user.profile.bio if @user.profile %></p>
+  <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">User: <%= @user.email %></h1>
+
+  <div class="container mx-auto mt-8">
+    <table class="min-w-full bg-white border rounded-lg shadow-md">
+      <thead>
+        <tr>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-6 py-4 border-b">
+            <ul class="list-disc pl-6">
+              <li class="mb-2">
+                <strong>Bio:</strong> <%= @user.profile&.bio || "No bio available" %>
+              </li>
+            </ul>
+            <br>
+            <div class="mt-6">
+              <ul class="space-y-2">
+                <li>
+                  <%= link_to "Edit", edit_user_path(@user), class: "text-yellow-500 hover:underline" %>
+                </li>
+                <li>
+                  <%= link_to "Delete", user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this user?" }, class: "text-red-500 hover:underline" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
