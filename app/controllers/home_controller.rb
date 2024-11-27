@@ -4,5 +4,6 @@ class HomeController < ApplicationController
     @books = Book.all
     @users = User.all
     @profiles = Profile.all
+    @appointments = Appointment.all
   end
 end

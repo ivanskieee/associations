@@ -1,0 +1,33 @@
+<div class="container p-6 mx-auto">
+  <h1 class="text-3xl font-bold text-center my-8" style="margin-top: -2rem;">Physicians</h1>
+
+  <div class="container mx-auto mt-8 px-4">
+    <%= link_to "New Physician", new_physician_path, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block" %>
+    <table class="min-w-full bg-white border rounded-lg shadow-md">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Name</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Patients</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @physicians.each do |physician| %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-6 py-4 text-gray-800 font-semibold">
+              <%= link_to physician.name, physician_path(physician), class: "text-blue-500 hover:underline" %>
+            </td>
+            <td class="px-6 py-4">
+              <ul>
+                <% physician.appointments.each do |appointment| %>
+                  <li>
+                    <%= link_to "Patient: #{appointment.patient.name}", patient_path(appointment.patient), class: "text-blue-500 hover:underline" %>
+                  </li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

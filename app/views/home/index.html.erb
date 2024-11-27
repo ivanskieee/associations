@@ -59,4 +59,48 @@
       <%= link_to 'View All Users', users_path, class: "text-blue-600 hover:text-blue-800 font-semibold" %>
   </div>
 </div>
+<br>
+<div class="container mx-auto mt-8">
+  <section class="bg-white border rounded-lg shadow-md p-6">
+    <h2 class="mb-4 text-xl font-semibold text-gray-700">Appointments</h2>
+    <table class="min-w-full">
+      <thead>
+        <tr>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Appointment ID</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Physician</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Patient</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Date & Time</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase border-b">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% counter = 1 %>
+        <% @appointments.each do |appointment| %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-6 py-4 text-gray-800 font-semibold">
+              <%= link_to "#{counter}", appointment_path(appointment), class: "text-blue-500 hover:underline" %>
+            </td>
+            <td class="px-6 py-4">
+              <%= appointment.physician.name if appointment.physician %>
+            </td>
+            <td class="px-6 py-4">
+              <%= appointment.patient.name if appointment.patient %>
+            </td>
+            <td class="px-6 py-4">
+              <%= appointment.appointment_date.strftime("%B %d, %Y %I:%M %p") %>
+            </td>
+            <td class="px-6 py-4">
+              <%= link_to "Edit", edit_appointment_path(appointment), class: "text-blue-500 hover:underline mr-4" %>
+              <%= link_to "Delete", appointment, method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 hover:underline" %>
+            </td>
+          </tr>
+          <% counter += 1 %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+  <div class="mt-4">
+    <%= link_to "New Appointment", new_appointment_path, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+  </div>
+</div>
 </div>
