@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
-      redirect_to @appointment, notice: "Appointment was successfully created."
+      redirect_to @appointment
     else
       render :new
     end

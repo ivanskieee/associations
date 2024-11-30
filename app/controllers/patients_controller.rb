@@ -14,7 +14,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     if @patient.save
-      redirect_to @patient, notice: "Patient created successfully."
+      redirect_to @patient
     else
       render :new, status: :unprocessable_entity
     end

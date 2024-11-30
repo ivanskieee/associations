@@ -14,7 +14,7 @@ class PhysiciansController < ApplicationController
   def create
     @physician = Physician.new(physician_params)
     if @physician.save
-      redirect_to @physician, notice: "Physician created successfully."
+      redirect_to @physician
     else
       render :new, status: :unprocessable_entity
     end
