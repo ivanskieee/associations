@@ -1,10 +1,10 @@
 class PhysiciansController < ApplicationController
   def index
-    @physicians = Physician.includes(appointments: :patient)
+    @physicians = Physician.all
   end
 
   def show
-    @physician = Physician.includes(:appointments).find(params[:id])
+    @physician = Physician.find(params[:id])
   end
 
   def new
@@ -42,11 +42,6 @@ class PhysiciansController < ApplicationController
   end
 
   private
-
-  def set_physician
-    @physician = Physician.find(params[:id])
-  end
-
   def physician_params
     params.require(:physician).permit(:name)
   end
